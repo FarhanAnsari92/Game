@@ -1,0 +1,243 @@
+<html>
+<head>
+<title>Tic Tac Toe</title>
+<script>
+var xCheck=true;
+var turnCount=0;
+var xWins=0;
+var oWins=0;
+var draw=0;
+
+function over(e)
+{
+if(xCheck)
+{
+e.value="X";
+}
+else
+{
+e.value="O";
+}
+}
+
+function out(e)
+{
+e.value="";
+}
+
+function GameStart(e)
+{
+//debugger
+if(xCheck)
+{
+e.value="X";
+}
+else
+{
+e.value="O";
+}
+xCheck=!xCheck;
+e.disabled=true;
+turnCount++;
+checkWinner();
+}
+
+function setControlsValue()
+{
+var a1 = document.getElementById('a1');
+var a2 = document.getElementById('a2');
+var a3 = document.getElementById('a3');
+
+var b1 = document.getElementById('b1');
+var b2 = document.getElementById('b2');
+var b3 = document.getElementById('b3');
+
+var c1 = document.getElementById('c1');
+var c2 = document.getElementById('c2');
+var c3 = document.getElementById('c3');
+
+a1.value="";
+a2.value="";
+a3.value="";
+
+b1.value="";
+b2.value="";
+b3.value="";
+
+c1.value="";
+c2.value="";
+c3.value="";
+}
+
+function enableControls()
+{
+var a1 = document.getElementById('a1');
+var a2 = document.getElementById('a2');
+var a3 = document.getElementById('a3');
+
+var b1 = document.getElementById('b1');
+var b2 = document.getElementById('b2');
+var b3 = document.getElementById('b3');
+
+var c1 = document.getElementById('c1');
+var c2 = document.getElementById('c2');
+var c3 = document.getElementById('c3');
+
+a1.disabled=false;
+a2.disabled=false;
+a3.disabled=false;
+
+b1.disabled=false;
+b2.disabled=false;
+b3.disabled=false;
+
+c1.disabled=false;
+c2.disabled=false;
+c3.disabled=false;
+}
+
+function checkWinner()
+{
+
+var a1 = document.getElementById('a1');
+var a2 = document.getElementById('a2');
+var a3 = document.getElementById('a3');
+
+var b1 = document.getElementById('b1');
+var b2 = document.getElementById('b2');
+var b3 = document.getElementById('b3');
+
+var c1 = document.getElementById('c1');
+var c2 = document.getElementById('c2');
+var c3 = document.getElementById('c3');
+
+var isWinner=false;
+//debugger
+if(a1.value==a2.value && a2.value==a3.value && a1.disabled)
+{
+isWinner=true;
+}
+else if(b1.value==b2.value && b2.value==b3.value && b1.disabled)
+{
+isWinner=true;
+}
+else if(c1.value==c2.value && c2.value==c3.value && c1.disabled)
+{
+isWinner=true;
+}
+
+else if(a1.value==b1.value && b1.value==c1.value && a1.disabled)
+{
+isWinner=true;
+}
+else if(a2.value==b2.value && b2.value==c2.value && a2.disabled)
+{
+isWinner=true;
+}
+else if(a3.value==b3.value && b3.value==c3.value && a3.disabled)
+{
+isWinner=true;
+}
+
+else if(a1.value==b2.value && b2.value==c3.value && a1.disabled)
+{
+isWinner=true;
+}
+else if(a3.value==b2.value && b2.value==c1.value && a3.disabled)
+{
+isWinner=true;
+}
+
+if(isWinner)
+{
+if(xCheck==false)
+{
+alert("X wins");
+xWins++;
+}
+else
+{
+alert("O wins");
+oWins++;
+}
+document.getElementById('xWins').innerHTML=xWins;
+document.getElementById('oWins').innerHTML=oWins;
+setControlsValue();
+enableControls();
+xCheck=true;
+turnCount=0;
+}
+else if(turnCount==9)
+{
+alert("draw");
+draw++;
+document.getElementById('draw').innerHTML=draw;
+setControlsValue();
+enableControls();
+xCheck=true;
+turnCount=0;
+}
+
+}
+
+</script>
+<style>
+input[type="button"]
+{
+    height: 90px;
+    width: 90px;
+    background-color: white;
+    color: white;
+    border-style: groove;
+    font-size: -webkit-xxx-large;
+    font-family: cursive;
+    border-color: white;
+    text-shadow: 2px 2px 15px #b1b1b1;
+}
+.container
+{
+    border: 1px solid black;
+    width: 285px;
+    margin: auto;
+    margin-top: 100;
+}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<table>
+<tr>
+<td><input type="button" id="a1" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+<td><input type="button" id="a2" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+<td><input type="button" id="a3" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+</tr>
+<tr>
+<td><input type="button" id="b1" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+<td><input type="button" id="b2" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+<td><input type="button" id="b3" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+</tr>
+<tr>
+<td><input type="button" id="c1" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+<td><input type="button" id="c2" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+<td><input type="button" id="c3" value="" onClick="GameStart(this)" onmouseover="over(this)" onmouseout="out(this)"; /></td>
+</tr>
+<tr>
+<td><span>X wins: </span></td>
+<td><span id="xWins">0</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span>O wins: </span></td>
+<td><span id="oWins">0</span></td>
+<td></td>
+</tr>
+<tr>
+<td><span>Draw: </span></td>
+<td><span id="draw">0</span></td>
+<td></td>
+</tr>
+</table>
+</div>
+</body>
+</html>
